@@ -4,31 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Las Flores Villas — St. John, USVI</title>
-<meta name="description" content="Four family-owned villas on the hills of St. John, USVI — private pools, ocean views, and walking distance to Cruz Bay. Hawksbill, Jasmine, Periwinkle & Rosebay.">
-<meta property="og:title" content="Las Flores Villas — St. John, USVI">
-<meta property="og:description" content="Four family-owned villas on the hills of St. John, USVI — private pools, ocean views, and walking distance to Cruz Bay.">
-<meta property="og:image" content="slide_photos/1.jpg">
-<meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌺</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
+/* ── PALETTE ──────────────────────────────────────────────────────────
+   Recolored per cambios_pagina.pptx: the warm cream/brown scheme is
+   replaced by grey + blue. Every value below marked [DECK] is a hex that
+   appears explicitly in the deck. Values marked [DERIVED] are not in the
+   deck — the deck gave no replacement for that role, so these are
+   interpolated to keep contrast legible. Change them freely.
 
+   Old value is kept in the comment so any swap is easy to reverse.
+   ──────────────────────────────────────────────────────────────────── */
 :root {
-  --cream:#EBEBEB;
-  --cream2:#F5F5F5;
-  --bd:#21252C;
-  --bm:#1C3EA4;
-  --bl:#1C3EA4;
-  --teal:#1C3EA4;
-  --bm-dk:#16307D;
-  --sand:#DADADA;
-  --sandl:#DBDBDB;
+  --cream:#EBEBEB;   /* [DECK]    page background      was #F5EDE0 */
+  --cream2:#F5F5F5;  /* [DERIVED] raised surfaces      was #FAF6F0 */
+  --bd:#21252C;      /* [DECK]    darkest / headings   was #3D1C0A */
+  --bm:#1C3EA4;      /* [DECK]    primary accent       was #7A4A2C */
+  --bl:#1C3EA4;      /* [DECK]    light accent         was #B07848 */
+  --teal:#1C3EA4;    /* [DECK]    (unused in CSS)      was #1A7A9A */
+  --bm-dk:#16307D;   /* [DERIVED] blue hover/pressed state */
+  --sand:#DADADA;    /* [DECK]    borders              was #D4B896 */
+  --sandl:#DBDBDB;   /* [DECK]    dividers / fills     was #EAD9C4 */
   --white:#fff;
-  --tx:#21252C;
-  --txm:#4A4F58;
-  --txl:#6E747E;
+  --tx:#21252C;      /* [DECK]    body text            was #3A1A08 */
+  --txm:#4A4F58;     /* [DERIVED] secondary text       was #6A4020 */
+  --txl:#6E747E;     /* [DERIVED] muted text           was #9A7A5A */
   --fs:'Cormorant Garamond',Georgia,serif; --fb:'Jost',system-ui,sans-serif;
   --nh:72px; --r:2px; --t:.3s ease;
 }
@@ -38,9 +40,8 @@ body{font-family:var(--fb);background:var(--cream);color:var(--tx);overflow-x:hi
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 button{font-family:var(--fb);cursor:pointer;border:none}
-.vc:focus-visible,.vsnt:focus-visible,.ovi:focus-visible,.flist li:focus-visible{
-  outline:2px solid var(--bm);outline-offset:2px}
 
+/* ── NAV ── */
 #nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nh);
   display:flex;align-items:center;justify-content:space-between;padding:0 40px;
   transition:background var(--t),box-shadow var(--t)}
@@ -59,33 +60,11 @@ button{font-family:var(--fb);cursor:pointer;border:none}
 .nl a:hover{color:var(--bm);background:rgba(28,62,164,.07)}
 .nav-light .nl a:hover{color:#fff;background:rgba(255,255,255,.12)}
 
-.nav-toggle{display:none;background:none;border:none;padding:6px;cursor:pointer;
-  flex-direction:column;gap:5px;width:38px;height:38px;align-items:center;justify-content:center}
-.nav-toggle span{display:block;width:22px;height:2px;background:var(--bd);border-radius:2px;
-  transition:background var(--t),transform var(--t),opacity var(--t)}
-.nav-light .nav-toggle span{background:#fff}
-.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-toggle.open span:nth-child(2){opacity:0}
-.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-.mobile-menu{position:fixed;top:var(--nh);left:0;right:0;z-index:998;
-  background:var(--bd);max-height:0;overflow:hidden;
-  transition:max-height .32s ease}
-.mobile-menu.open{max-height:420px}
-.mobile-menu ul{list-style:none;padding:6px 24px 22px}
-.mobile-menu li a{display:block;padding:15px 4px;font-size:.85rem;font-weight:500;
-  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);
-  border-bottom:1px solid rgba(255,255,255,.12);transition:color var(--t)}
-.mobile-menu li:last-child a{border-bottom:none}
-.mobile-menu li a:hover{color:#fff}
-
-.mobile-menu-backdrop{position:fixed;top:var(--nh);left:0;right:0;bottom:0;z-index:997;
-  background:rgba(33,37,44,.4);opacity:0;pointer-events:none;transition:opacity var(--t)}
-.mobile-menu-backdrop.open{opacity:1;pointer-events:auto}
-
+/* ── APP ── */
 #app{animation:pgIn .38s ease both}
 @keyframes pgIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
+/* ── HERO ── */
 .hero{position:relative;height:100svh;min-height:580px;overflow:hidden;
   display:flex;align-items:center;justify-content:center}
 .hslide{position:absolute;inset:0;background-size:cover;background-position:center;
@@ -112,6 +91,7 @@ button{font-family:var(--fb);cursor:pointer;border:none}
   cursor:pointer;transition:all var(--t)}
 .hdot.on{background:#fff;transform:scale(1.25)}
 
+/* ── SECTION UTILITIES ── */
 .section-eyebrow{font-size:.66rem;font-weight:500;letter-spacing:.3em;
   text-transform:uppercase;color:var(--bl);display:block;margin-bottom:12px}
 .section-title{font-family:var(--fs);font-size:clamp(1.9rem,4vw,2.9rem);
@@ -119,8 +99,9 @@ button{font-family:var(--fb);cursor:pointer;border:none}
 .mxw{max-width:1200px;margin:0 auto}
 .pad{padding:0 40px}
 
+/* ── INTRO ── */
 .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
-  max-width:1200px;margin:0 auto;padding:86.4px 40px 96px}
+  max-width:1200px;margin:0 auto;padding:96px 40px}
 .intro-grid img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .intro-eybrow{margin-bottom:14px}
 .intro-grid h2{font-family:var(--fs);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:400;
@@ -130,6 +111,7 @@ button{font-family:var(--fb);cursor:pointer;border:none}
 .feat{font-size:.8rem;color:var(--txl);display:flex;align-items:center;gap:8px;padding:5px 0}
 .feat::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--bl);flex-shrink:0}
 
+/* ── VILLA CARDS ── */
 .vcards-wrap{max-width:1200px;margin:0 auto;padding:0 40px 96px}
 .vcards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
   background:var(--sandl);border:1px solid var(--sandl)}
@@ -149,6 +131,7 @@ button{font-family:var(--fb);cursor:pointer;border:none}
   transition:color var(--t),border-color var(--t)}
 .vc:hover .vc-link{color:var(--bm);border-color:var(--bm)}
 
+/* ── ST. JOHN ── */
 .stjohn{padding:96px 40px;background:var(--cream2)}
 .sj-inner{max-width:1200px;margin:0 auto;display:grid;
   grid-template-columns:1fr 1fr;gap:80px;align-items:start}
@@ -167,6 +150,10 @@ button{font-family:var(--fb);cursor:pointer;border:none}
 .sj-li-t{font-size:.83rem;font-weight:500;color:var(--bd);display:block;margin-bottom:2px}
 .sj-li-s{font-size:.78rem;color:var(--txl)}
 
+/* ── OFFERS ── */
+/* [DECK] Special Offers reads as a dark 21252C band with light EBEBEB cards.
+   To revert to a light band: background:var(--sandl) and delete the two
+   heading overrides below. */
 .offers-wrap{padding:96px 40px;background:var(--bd)}
 .offers-wrap .section-title{color:#fff}
 .offers-wrap .section-eyebrow{color:rgba(255,255,255,.55)}
@@ -178,20 +165,20 @@ button{font-family:var(--fb);cursor:pointer;border:none}
 .ocard-body h3{font-family:var(--fs);font-size:1.35rem;color:var(--bd);margin-bottom:9px}
 .ocard-body p{font-size:.83rem;line-height:1.8;color:var(--txl)}
 
+/* ── REVIEWS ── */
 .reviews-wrap{padding:96px 40px;position:relative;
+  /* [DECK] 21252C @ 50% transparency (was brown @ 80%) */
   background:linear-gradient(rgba(33,37,44,.5),rgba(33,37,44,.5)),
-  url('slide_photos/1.jpg');
+  url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1920&q=80');
   background-size:cover;background-position:center;background-attachment:fixed}
-@media(max-width:900px){
-  .reviews-wrap{background-attachment:scroll}
-}
 .reviews-inner{max-width:1200px;margin:0 auto}
 .reviews-inner .section-eyebrow{color:rgba(255,255,255,.45)}
 .reviews-inner .section-title{color:#fff;margin-bottom:44px}
 .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .rcard{display:block;padding:30px 28px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);transition:background var(--t),border-color var(--t)}
 a.rcard:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28)}
-
+/* --bl is now blue (#1C3EA4); on the dark reviews band that fails contrast,
+   so the quote mark and attribution go to white at reduced opacity. */
 .rqs{font-family:var(--fs);font-size:3.2rem;line-height:1;color:rgba(255,255,255,.55);margin-bottom:8px}
 .rstars{color:rgba(255,255,255,.75);font-size:.73rem;letter-spacing:3px;margin-bottom:10px}
 .rtxt{font-size:.9rem;line-height:1.85;color:rgba(255,255,255,.8);font-style:italic;margin-bottom:15px}
@@ -201,9 +188,10 @@ a.rcard:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28
   color:rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.28);
   padding-bottom:2px;cursor:pointer}
 
+/* ── FOOTER ── */
 footer{background:var(--cream2);border-top:1px solid var(--sand);padding:64px 40px 32px}
 .fg{max-width:1200px;margin:0 auto;display:grid;
-  grid-template-columns:2fr 1fr;gap:40px}
+  grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
 .fbn{font-family:var(--fs);font-size:1.65rem;font-weight:500;color:var(--bd);margin-bottom:11px}
 .ftag{font-size:.83rem;line-height:1.75;color:var(--txl);line-height:1.75;margin-bottom:18px}
 .fcon p{font-size:.8rem;color:var(--txm);margin-bottom:5px}
@@ -219,6 +207,7 @@ footer{background:var(--cream2);border-top:1px solid var(--sand);padding:64px 40
   border-top:1px solid var(--sand);display:flex;justify-content:space-between;
   font-size:.73rem;color:var(--txl)}
 
+/* ── VILLA DETAIL ── */
 .vhero{height:18vh;min-height:175px;position:relative;
   display:flex;align-items:flex-end;overflow:hidden}
 .vhero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -237,9 +226,14 @@ footer{background:var(--cream2);border-top:1px solid var(--sand);padding:64px 40
   text-transform:uppercase;color:var(--txl);cursor:pointer;white-space:nowrap;
   border-bottom:2px solid transparent;transition:all var(--t)}
 .vsnt:hover{color:var(--bd);border-bottom-color:var(--sand)}
+.vsnt.on{color:var(--bd);border-bottom-color:var(--bm)}
 .vmain{max-width:1200px;margin:0 auto;padding:40px 40px 60px}
 .v2col{display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:start}
-
+.vgallery{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:52px}
+.vgallery img{width:100%;object-fit:cover}
+.vgallery img:first-child{grid-column:span 2;aspect-ratio:16/9}
+.vgallery img:not(:first-child){aspect-ratio:4/3}
+/* villa photo slideshow */
 .vshow{position:relative;margin-bottom:12px;background:var(--bd);
   border:1px solid var(--sand);border-radius:var(--r);overflow:hidden;
   outline:none}
@@ -265,6 +259,7 @@ footer{background:var(--cream2);border-top:1px solid var(--sand);padding:64px 40
 .vshow-dot.on{background:#fff;transform:scale(1.3)}
 .vshow.single .vshow-arrow,.vshow.single .vshow-dots,.vshow.single .vshow-counter{display:none}
 
+/* thumbnail strip under the slideshow */
 .vshow.single{margin-bottom:52px}
 .vshow-thumbs{display:flex;gap:6px;margin-bottom:52px;overflow-x:auto;
   padding-bottom:8px;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
@@ -279,6 +274,7 @@ footer{background:var(--cream2);border-top:1px solid var(--sand);padding:64px 40
 .vthumb:hover{opacity:.85}
 .vthumb.on{opacity:1;border-color:var(--bm)}
 
+/* lightbox — "partial fullscreen" viewer */
 .vlb{position:fixed;inset:0;z-index:2000;display:none;align-items:center;
   justify-content:center;background:rgba(33,37,44,.86);backdrop-filter:blur(3px);
   padding:5vh 5vw;cursor:zoom-out}
@@ -332,26 +328,28 @@ a.vrev:hover .vrev-more{color:var(--bd)}
 .vrev-more{display:inline-block;margin-top:10px;font-size:.66rem;font-style:normal;
   letter-spacing:.12em;text-transform:uppercase;color:var(--txl);
   transition:color var(--t)}
-
+/* Stars were gold (#C98040). Set to the accent blue for palette consistency.
+   NOTE: the deck's unexplained yellow swatch may have been meant for these —
+   if so, swap var(--bm) for that yellow. See notes. */
 .vrev-stars{color:var(--bm);font-size:.73rem;letter-spacing:3px;margin-bottom:5px}
 .vrev-txt{font-size:.86rem;line-height:1.8;color:var(--txm);font-style:italic}
 .vrev-link{display:inline-block;margin-top:9px;font-size:.7rem;font-style:normal;
   letter-spacing:.1em;text-transform:uppercase;color:var(--bm);
   border-bottom:1px solid var(--bm);padding-bottom:1px;transition:color var(--t),border-color var(--t)}
 .vrev-link:hover{color:var(--bd);border-color:var(--bd)}
-
+/* sidebar */
 .vsidebar{position:sticky;top:calc(var(--nh) + 56px)}
 .bwid{background:#fff;border:1px solid var(--sand);padding:24px 26px;margin-bottom:14px}
 .bwid-p{font-family:var(--fs);font-size:2.1rem;color:var(--bd)}
 .bwid-p small{font-family:var(--fb);font-size:.78rem;color:var(--txl)}
 .bwid-tag{font-size:.73rem;color:var(--txl);line-height:1.5;margin-bottom:16px}
-
+/* [DECK] booking CTA -> 1C3EA4 (was the darkest brown) */
 .bwid-cta{display:block;text-align:center;background:var(--bm);color:#fff;
   padding:14px 18px;font-size:.72rem;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;transition:background var(--t)}
 .bwid-cta:hover{background:var(--bm-dk)}
 .bwid-note{margin-top:11px;text-align:center;font-size:.68rem;color:var(--txl)}
-
+/* location map */
 .vmap-wrap{margin-top:18px}
 .vmap{width:100%;height:280px;border:1px solid var(--sand);border-radius:var(--r);
   display:block;background:var(--cream2)}
@@ -359,21 +357,7 @@ a.vrev:hover .vrev-more{color:var(--bd)}
   color:var(--bm);border-bottom:1px solid var(--bm);padding-bottom:2px;
   transition:color var(--t),border-color var(--t)}
 .vmap-link:hover{color:var(--bd);border-color:var(--bd)}
-
-.mobile-book-bar{display:none;align-items:center;justify-content:space-between;gap:14px;
-  position:fixed;left:0;right:0;bottom:0;z-index:500;
-  background:var(--cream2);border-top:1px solid var(--sand);
-  padding:12px 18px;box-shadow:0 -4px 24px rgba(33,37,44,.12)}
-.mbb-info{display:flex;flex-direction:column;line-height:1.35;min-width:0}
-.mbb-info strong{font-family:var(--fs);font-size:1.05rem;font-weight:500;color:var(--bd);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mbb-info span{font-size:.66rem;color:var(--txl);letter-spacing:.03em;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mbb-cta{flex-shrink:0;background:var(--bm);color:#fff;font-size:.7rem;font-weight:600;
-  letter-spacing:.08em;text-transform:uppercase;padding:13px 16px;border-radius:var(--r);
-  white-space:nowrap;transition:background var(--t)}
-.mbb-cta:hover{background:var(--bm-dk)}
-
+/* [DECK] Quick Facts panel -> DADADA */
 .ipanel{background:var(--sand);border:1px solid var(--sand);padding:18px;margin-bottom:14px}
 .ipanel h4{font-size:.63rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
   color:var(--txm);margin-bottom:12px}
@@ -381,7 +365,7 @@ a.vrev:hover .vrev-more{color:var(--bd)}
   border-bottom:1px solid rgba(33,37,44,.14);font-size:.82rem}
 .irow:last-child{border:none}
 .irow strong{color:var(--bd)}
-
+/* [DECK] Other Villas panel -> 21252C (dark), so its text goes light */
 .ovillas{background:var(--bd);border:1px solid var(--bd);padding:18px}
 .ovillas h4{font-size:.63rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
   color:rgba(255,255,255,.5);margin-bottom:12px}
@@ -394,6 +378,7 @@ a.vrev:hover .vrev-more{color:var(--bd)}
 .ovi-n{font-family:var(--fs);font-size:.98rem;color:#fff}
 .ovi-f{font-size:.7rem;color:rgba(255,255,255,.5)}
 
+/* ── ABOUT ── */
 .ahero{background:var(--bd);padding:calc(var(--nh) + 72px) 40px 72px;text-align:center}
 .ahero h1{font-family:var(--fs);font-size:clamp(2.5rem,6vw,4rem);font-weight:300;color:#fff}
 .ahero p{font-size:.93rem;color:rgba(255,255,255,.55);max-width:500px;
@@ -401,18 +386,16 @@ a.vrev:hover .vrev-more{color:var(--bd)}
 .abody{max-width:1200px;margin:0 auto;padding:80px 40px}
 .ag{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:72px;align-items:center}
 
+/* ── RESPONSIVE ── */
 @media(max-width:1040px){
   .v2col{grid-template-columns:1fr}
   .vsidebar{position:static}
   .vsidebar>*{max-width:480px}
   .dist-row{grid-template-columns:1fr 1fr}
-  .mobile-book-bar{display:flex}
-  .vmain{padding-bottom:110px}
 }
 @media(max-width:900px){
   #nav{padding:0 20px}
   .nl{display:none}
-  .nav-toggle{display:flex}
   .intro-grid,.sj-inner,.ag{grid-template-columns:1fr;gap:40px}
   .vcards{grid-template-columns:1fr 1fr}
   .rg{grid-template-columns:1fr}
@@ -425,6 +408,8 @@ a.vrev:hover .vrev-more{color:var(--bd)}
   .fg{grid-template-columns:1fr}
   .intro-grid,.stjohn,.offers-wrap,.vcards-wrap,.reviews-wrap{padding-left:20px;padding-right:20px}
   .vmain,.vhcont,.vsubnav{padding-left:20px;padding-right:20px}
+  .vgallery{grid-template-columns:1fr}
+  .vgallery img:first-child{aspect-ratio:4/3}
   .amen-grid{grid-template-columns:1fr}
   .dist-row{grid-template-columns:1fr 1fr}
   .rg{gap:14px}
@@ -433,35 +418,21 @@ a.vrev:hover .vrev-more{color:var(--bd)}
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav" class="solid">
-  <a class="nb" href="#" onclick="go('')">
+  <div class="nb" onclick="go('')">
     <div class="nb-name" id="nbn">Las Flores</div>
     <div class="nb-sub" id="nbs">Villas · St. John, USVI</div>
-  </a>
+  </div>
   <ul class="nl" id="nl">
-    <li><a href="#" onclick="go('')">Home</a></li>
-    <li><a href="#villa/hawksbill" onclick="go('villa/hawksbill')">Hawksbill</a></li>
-    <li><a href="#villa/jasmine" onclick="go('villa/jasmine')">Jasmine</a></li>
-    <li><a href="#villa/periwinkle" onclick="go('villa/periwinkle')">Periwinkle</a></li>
-    <li><a href="#villa/rosebay" onclick="go('villa/rosebay')">Rosebay</a></li>
-    <li><a href="#about" onclick="go('about')">About</a></li>
+    <li><a onclick="go('')">Home</a></li>
+    <li><a onclick="go('villa/hawksbill')">Hawksbill</a></li>
+    <li><a onclick="go('villa/jasmine')">Jasmine</a></li>
+    <li><a onclick="go('villa/periwinkle')">Periwinkle</a></li>
+    <li><a onclick="go('villa/rosebay')">Rosebay</a></li>
+    <li><a onclick="go('about')">About</a></li>
   </ul>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileNav()">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-
-<div class="mobile-menu-backdrop" id="mobileMenuBackdrop" onclick="closeMobileNav()"></div>
-<div class="mobile-menu" id="mobileMenu">
-  <ul>
-    <li><a href="#" onclick="go('')">Home</a></li>
-    <li><a href="#villa/hawksbill" onclick="go('villa/hawksbill')">Hawksbill</a></li>
-    <li><a href="#villa/jasmine" onclick="go('villa/jasmine')">Jasmine</a></li>
-    <li><a href="#villa/periwinkle" onclick="go('villa/periwinkle')">Periwinkle</a></li>
-    <li><a href="#villa/rosebay" onclick="go('villa/rosebay')">Rosebay</a></li>
-    <li><a href="#about" onclick="go('about')">About</a></li>
-  </ul>
-</div>
 
 <div id="app"></div>
 
@@ -471,25 +442,31 @@ a.vrev:hover .vrev-more{color:var(--bd)}
       <div class="fbn">Las Flores Villas</div>
       <p class="ftag">Family owned property.</p>
       <div class="fcon">
+        <p> </p>
+        <p> </p>
         <p>📍 211 Chocolate Hole, Cruz Bay, St. John, USVI</p>
       </div>
     </div>
     <div>
       <div class="fct">Villas</div>
       <ul class="flist">
-        <li tabindex="0" role="link" onclick="go('villa/hawksbill')">Hawksbill</li>
-        <li tabindex="0" role="link" onclick="go('villa/jasmine')">Jasmine</li>
-        <li tabindex="0" role="link" onclick="go('villa/periwinkle')">Periwinkle</li>
-        <li tabindex="0" role="link" onclick="go('villa/rosebay')">Rosebay</li>
+        <li onclick="go('villa/hawksbill')">Hawksbill</li>
+        <li onclick="go('villa/jasmine')">Jasmine</li>
+        <li onclick="go('villa/periwinkle')">Periwinkle</li>
+        <li onclick="go('villa/rosebay')">Rosebay</li>
       </ul>
     </div>
   </div>
   <div class="fbot">
     <span>© 2026 Las Flores Villas.</span>
+    <span></span>
   </div>
 </footer>
 
 <script>
+/* ═══════════════════════════════════
+   DATA
+═══════════════════════════════════ */
 
 const IMG={
   hero:[
@@ -502,8 +479,13 @@ const IMG={
     'slide_photos/7.jpg',
     'slide_photos/8.jpg',
     'slide_photos/9.jpg',
+
   ],
   intro:'slide_photos/9.jpg',
+  // Each villa's representative image — used for the villa-page hero banner and
+  // for the thumbnails on the home page + "Other Villas" sidebar. These stay the
+  // curated header shots; the in-page photo slideshow is sourced separately (see
+  // GALLERY_DIRS below).
   hawksbill:['villa_header_photos/Hawksbill.jpg'],
   jasmine:['villa_header_photos/Jasmine.jpg'],
   periwinkle:['villa_header_photos/Periwinkle.jpg'],
@@ -516,6 +498,16 @@ const IMG={
   o3:'home_photos/four.jpg',
 };
 
+/* ── VILLA GALLERY PHOTOS ──
+   EXPLICIT, COMPLETE list of every photo filename in each villa's folder. A
+   browser can't read a directory, so every file that should appear must be
+   listed here. Photos load in this exact order, the first entry shows on load,
+   and the set NEVER changes after render — no auto-discovery, no reshuffling.
+   This list is exhaustive on purpose: it includes EVERY file in each folder —
+   the drone shots, the shared "DJI_0773 copy.jpg", the blueprint, and the
+   furniture-layout diagrams. To add or remove a photo, edit its villa's array.
+   (Note: IMG_6176 must be a browser-displayable format such as .jpg — HEIC
+   won't render, which is why the converted IMG_6176.jpg is what's listed.) */
 const GALLERY_DIRS={
   hawksbill:'hawksbill_photos',
   jasmine:'jasmine_photos',
@@ -531,13 +523,15 @@ const GALLERY_FILES={
 const galleryPhotos=id=>{
   const dir=GALLERY_DIRS[id];
   if(!dir)return[];
+  // encodeURIComponent so filenames with spaces (e.g. "DJI_0773 copy.jpg",
+  // "Rosebay - Furniture Layout - 1-17-19.jpg") resolve correctly in the browser.
   return (GALLERY_FILES[id]||[]).map(f=>`${dir}/${encodeURIComponent(f)}`);
 };
 
 const VD={
   hawksbill:{name:'Hawksbill',tagline:'Panoramic Ocean Views & Private Pool',
-    beds:2,baths:2,guests:4,
-    desc:`Perched on a lush hillside with sweeping views of Cruz Bay and the Caribbean beyond, Hawksbill is the crown jewel of Las Flores. This two-bedroom retreat centers on a large, light-filled living room and a private pool that looks out to the sea. The wrap-around deck is set up for island living, with a grill, an outdoor dining table, and plenty of chairs for lounging in the sun. A full kitchen and easy indoor-outdoor flow make it as practical as it is beautiful — ideal for families or groups who want the very best of St. John.`,
+    beds:2,baths:2,guests:4,sqft:'2,200',
+    desc:`Hawksbill is the crown jewel of Las Flores. This two-bedroom retreat features a light-filled living room and a private pool that looks out to the sea. The wrap-around deck is set up for island living, with a grill, an outdoor dining table, and plenty of chairs for lounging in the sun. A full kitchen and easy indoor-outdoor flow make it as practical as it is beautiful — ideal for families and groups`,
     amen:['Private Pool','2 Bedrooms','2 Full Bathrooms','Full Kitchen w/ Appliances','Air Conditioning','Cable TV','High-Speed WiFi','Washer & Dryer','Large Living Room','Private Deck','Outdoor Dining Table','BBQ Grill','Lounge Chairs','Parking'],
     dist:{'🏖':'Beach|10 min drive','🌿':'National Park|8 min drive','🏘':'Cruz Bay|6 min drive','⛴':'Ferry Terminal|10 min drive'},
     reviews:[
@@ -546,8 +540,8 @@ const VD={
       {stars:5,txt:`"Great location — up high enough for views, but close to town." Nicely decorated, spotless, and comfortable for our family of four.`},
     ]},
   jasmine:{name:'Jasmine',tagline:'Tropical Elegance & Ocean Views',
-    beds:2,baths:2,guests:6,
-    desc:`Jasmine is a lovingly renovated two-bedroom villa that captures the soul of the Caribbean. Warm finishes, a large open living room, and lush garden and ocean views give it an atmosphere that feels genuinely lived-in and loved. The wrap-around deck comes with a grill, an outdoor dining table, and chairs made for slow mornings and long sunsets. With a full kitchen and comfortable island style throughout, it's the perfect hideaway for couples or families who want space without giving up modern comforts.`,
+    beds:2,baths:2,guests:6,sqft:'1,800',
+    desc:`Jasmine has a total of four beds: two in the attic, one in the main bedroom, and one in the private basement. This makes it suitable for families and groups, combined with the large living room. The wrap-around deck comes with a grill, an outdoor dining table, and chairs. The washing and drying machine are in the bathroom of the basement.`,
     amen:['Ocean & Garden Views','2 Bedrooms','2 Full Bathrooms','Full Kitchen w/ Appliances','Air Conditioning','Cable TV','High-Speed WiFi','Washer & Dryer','Large Living Room','Private Deck','Outdoor Dining Table','BBQ Grill','Lounge Chairs','Parking'],
     dist:{'🏖':'Beach|10 min drive','🌿':'National Park|8 min drive','🏘':'Cruz Bay|6 min drive','⛴':'Ferry Terminal|10 min drive'},
     reviews:[
@@ -556,9 +550,9 @@ const VD={
       {stars:5,txt:`Comfortable and convenient to town, and the whole place was spotless. Many thanks — we'll see you next time.`},
     ]},
   periwinkle:{name:'Periwinkle',tagline:'Breezy Island Living at Its Finest',
-    beds:2,baths:2,guests:4,
-    desc:`Periwinkle captures the breezy, unhurried spirit of St. John. This cheerful two-bedroom home features ceiling fans, comfortable island-style furnishings, and a welcoming open layout that brings the outside in. Spend tropical mornings on the private deck, lazy afternoons in the shade, and evenings watching the sunset paint the sky over Great Cruz Bay in coral and gold. Simple, stylish, and exactly what a Caribbean escape should feel like.`,
-    amen:['Island Views','Full Kitchen w/ Appliances','Ceiling Fans','Air Conditioning','Cable TV','High-Speed WiFi','Washer & Dryer','Private Deck','Outdoor Dining','BBQ Grill','Parking'],
+    beds:2,baths:2,guests:4,sqft:'1,650',
+    desc:`Periwinkle is a two-bedroom home that features an attic and comfortable furnishings. Simple, stylish, and exactly what a Caribbean escape should feel like.`,
+    amen:['Island Views','Full Kitchen w/ Appliances', 'Air Conditioning','Cable TV','High-Speed WiFi','Washer & Dryer','Private Deck','Outdoor Dining','BBQ Grill','Parking'],
     dist:{'🏖':'Beach|10 min drive','🌿':'National Park|8 min drive','🏘':'Cruz Bay|6 min drive','⛴':'Ferry Terminal|10 min drive'},
     reviews:[
       {stars:5,txt:`Love this unit, zero complaints!`},
@@ -566,8 +560,8 @@ const VD={
       {stars:5,txt:`Arriving late on Saturday, the gift basket was an awesome surprise — the contents provided for a wonderful meal as we settled into our beautiful villa. The villa was very clean and well stocked. We will definitely book with Destination St. John again.`},
     ]},
   rosebay:{name:'Rosebay',tagline:'A Private Romantic Escape',
-    beds:1,baths:1,guests:2,
-    desc:`Rosebay is an intimate one-bedroom cottage crafted for privacy and deep relaxation. It offers some of the most sweeping vistas of any villa at Las Flores — from Hart Bay to Great Cruz Bay and beyond — with crisp island linens and a bright, airy great room. It's the perfect setting for honeymooners, anniversaries, or couples craving a quiet corner of paradise. Small in footprint but grand in spirit, Rosebay is where you come to disconnect from everything and reconnect with each other.`,
+    beds:1,baths:1,guests:2,sqft:'900',
+    desc:`Rosebay is an intimate one-bedroom home crafted for privacy and relaxation. Like the other villas, it comes with cable TV, a kitchen, living room, deck, and bathroom. It's the perfect setting for honeymoons, anniversaries, or couples craving a quiet corner of paradise. Small in footprint; grand in spirit.`,
     amen:['King Bedroom','1 Full Bathroom','Full Kitchen w/ Appliances','Air Conditioning','Cable TV','High-Speed WiFi','Washer & Dryer','Private Covered Deck','Beach Chairs','Welcome Basket','Parking'],
     dist:{'🏖':'Beach|10 min drive','🌿':'National Park|8 min drive','🏘':'Cruz Bay|6 min drive','⛴':'Ferry Terminal|10 min drive'},
     reviews:[
@@ -577,6 +571,11 @@ const VD={
     ]},
 };
 
+/* ── VILLA MAP COORDINATES ──
+   Each villa's exact pin on St. John, distilled from its Google Maps place
+   link (the long ...!3d<lat>!4d<lng>... "data" blob). We keep only lat/lng:
+   that's all we need to both embed a keyless interactive map and build a
+   clean, shareable /maps/place/<Name>/@<lat>,<lng> link. */
 const MAPS={
   hawksbill:{lat:18.3233479,lng:-64.7820488},
   jasmine:{lat:18.3234733,lng:-64.7822272},
@@ -584,28 +583,11 @@ const MAPS={
   rosebay:{lat:18.3231998,lng:-64.7822411},
 };
 
+/* ═══════════════════════════════════
+   ROUTER
+═══════════════════════════════════ */
 let _interval=null, _slide=0;
-window.go=function(r){window.location.hash=r;window.scrollTo(0,0);closeMobileNav()};
-
-window.toggleMobileNav=function(){
-  const menu=document.getElementById('mobileMenu');
-  menu.classList.contains('open')?closeMobileNav():openMobileNav();
-};
-function openMobileNav(){
-  document.getElementById('mobileMenu').classList.add('open');
-  document.getElementById('mobileMenuBackdrop').classList.add('open');
-  document.getElementById('navToggle').classList.add('open');
-  document.getElementById('navToggle').setAttribute('aria-expanded','true');
-}
-function closeMobileNav(){
-  document.getElementById('mobileMenu').classList.remove('open');
-  document.getElementById('mobileMenuBackdrop').classList.remove('open');
-  document.getElementById('navToggle').classList.remove('open');
-  document.getElementById('navToggle').setAttribute('aria-expanded','false');
-}
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')closeMobileNav();
-});
+window.go=function(r){window.location.hash=r;window.scrollTo(0,0)};
 
 function render(){
   clearInterval(_interval);
@@ -616,13 +598,10 @@ function render(){
   void app.offsetHeight;
   app.style.animation='';
   if(!hash||hash==='home'){
+    navMode(false);
     app.innerHTML=buildHome();
     startSlideshow();
-    const heroEl=document.querySelector('.hero');
-    const navH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nh'))||72;
-    const updateNav=()=>navMode(window.scrollY<(heroEl?heroEl.offsetHeight:600)-navH);
-    window.onscroll=updateNav;
-    updateNav();
+    window.onscroll=null;
   } else if(hash.startsWith('villa/')){
     navMode(false);
     window.onscroll=null;
@@ -680,6 +659,18 @@ window.goSlide=function(i){
   },5000);
 };
 
+/* ═══════════════════════════════════
+   VILLA PHOTO SLIDESHOW
+   Static in every sense:
+   • Photos NEVER auto-advance — the slide only changes when someone uses the
+     arrows / dots / arrow-keys / swipe.
+   • The set of slides is FIXED at render time from GALLERY_FILES and never
+     changes afterward — no background probing, no inserting, no reordering.
+     What you see on load is exactly the pages you get.
+   The only defensive tweak is prune(): if a listed photo genuinely fails to
+   load (e.g. a filename typo), that single slide is dropped so the show never
+   displays a broken-image icon. With a correct file list this never fires.
+═══════════════════════════════════ */
 function initVillaSlideshow(){
   const stage=document.querySelector('.vshow');
   if(!stage)return;
@@ -713,6 +704,8 @@ function initVillaSlideshow(){
   const next=()=>go(idx+1);
   const prev=()=>go(idx-1);
 
+  // Remove any slide whose photo doesn't load; fall back to the header shot if
+  // the folder turns out to be empty / misnamed so the page never shows a gap.
   const prune=img=>{
     const slide=img.closest('.vshow-slide');
     if(!slide)return;
@@ -763,6 +756,7 @@ function initVillaSlideshow(){
     else if(e.key==='ArrowLeft'){prev();e.preventDefault();}
   });
 
+  // click the photo → open the partial-fullscreen viewer (skip if it was a swipe)
   let swiped=false;
   track.addEventListener('click',()=>{if(!swiped)openLightbox();});
 
@@ -778,6 +772,14 @@ function initVillaSlideshow(){
   paint();
 }
 
+/* ═══════════════════════════════════
+   LIGHTBOX ("partial fullscreen" photo viewer)
+   Built once, reused by every villa slideshow. Clicking a photo opens it over a
+   dimmed backdrop, filling most (not all) of the viewport. It closes on: the ×
+   in the corner, a click on the backdrop / anywhere off the photo, or Esc.
+   The arrows / ←→ move through that villa's photos and keep the in-page
+   slideshow in sync, so it lands on the same photo when the viewer closes.
+═══════════════════════════════════ */
 function ensureLightbox(){
   if(window._LB)return window._LB;
   const el=document.createElement('div');
@@ -817,6 +819,7 @@ function ensureLightbox(){
   };
   el.querySelector('.vlb-prev').addEventListener('click',()=>move(-1));
   el.querySelector('.vlb-next').addEventListener('click',()=>move(1));
+  // backdrop / × / area around the photo closes; the photo itself & arrows don't
   el.addEventListener('click',e=>{
     if(e.target.closest('.vlb-arrow')||e.target.closest('.vlb-img'))return;
     close();
@@ -831,12 +834,15 @@ function ensureLightbox(){
   return window._LB;
 }
 
+/* ═══════════════════════════════════
+   HOME PAGE
+═══════════════════════════════════ */
 function buildHome(){
   const slides=IMG.hero.map(u=>`<div class="hslide" style="background-image:url('${u}')"></div>`).join('');
   const dots=IMG.hero.map((_,i)=>`<div class="hdot" onclick="goSlide(${i})"></div>`).join('');
 
   const vcards=Object.entries(VD).map(([id,v])=>`
-    <div class="vc" onclick="go('villa/${id}')" tabindex="0" role="link" aria-label="View ${v.name}">
+    <div class="vc" onclick="go('villa/${id}')">
       <div class="vc-img"><img src="${IMG[id][0]}" alt="${v.name}" loading="lazy"></div>
       <div class="vc-body">
         <div class="vc-name">${v.name}</div>
@@ -861,11 +867,14 @@ function buildHome(){
       : `<div class="rcard">${inner}</div>`;
   }).join('');
 
+  // Mini sub-nav (mirrors the villa pages). On the home page there is no
+  // "current" villa to exclude, so every villa is listed.
   const villaTabs=Object.entries(VD)
-    .map(([id,v])=>`<div class="vsnt" onclick="go('villa/${id}')" tabindex="0" role="link">${v.name}</div>`)
+    .map(([id,v])=>`<div class="vsnt" onclick="go('villa/${id}')">${v.name}</div>`)
     .join('');
 
   return `
+  <!-- HERO -->
   <section class="hero">
     ${slides}
     <div class="hovl"></div>
@@ -880,16 +889,18 @@ function buildHome(){
     <div class="hdots">${dots}</div>
   </section>
 
+  <!-- MINI SUB-NAV -->
   <div class="vsubnav">
     ${villaTabs}
   </div>
 
+  <!-- INTRO -->
   <div class="intro-grid">
     <img src="${IMG.intro}" alt="Las Flores villa" loading="lazy">
     <div>
       <span class="section-eyebrow intro-eybrow">Welcome to Las Flores</span>
       <h2>Las Flores</h2>
-      <p>Every villa is chosen to deliver that blend of comfort and unforgettable views. From a private two-bedroom home with its own pool to a romantic one-bedroom cottage, our properties are designed for the way you want to vacation.</p>
+      <p>Every villa is chosen to deliver that blend of comfort and unforgettable views. From a home with its own pool to a romantic one-bedroom villa, our properties are designed for people's specialized needs.</p>
       <div class="feat-grid">
         <span class="feat">Cable TV & High-Speed WiFi</span>
         <span class="feat">Ocean & Island Views</span>
@@ -903,6 +914,7 @@ function buildHome(){
     </div>
   </div>
 
+  <!-- VILLA CARDS -->
   <div class="vcards-wrap">
     <div style="margin-bottom:36px">
       <span class="section-eyebrow">Choose Your Villa</span>
@@ -911,6 +923,7 @@ function buildHome(){
     <div class="vcards">${vcards}</div>
   </div>
 
+  <!-- ST. JOHN -->
   <section class="stjohn">
     <div class="sj-inner">
       <div class="sj-text">
@@ -928,11 +941,11 @@ function buildHome(){
           </li>
           <li>
             <div class="sj-icon">🌊</div>
-            <div><span class="sj-li-t">Snorkeling</span><span class="sj-li-s">Crystal-clear Caribbean water with vibrant reefs teeming with marine life</span></div>
+            <div><span class="sj-li-t">Snorkeling</span><span class="sj-li-s">Crystal-clear Caribbean water; vibrant reefs teeming with marine life</span></div>
           </li>
           <li>
             <div class="sj-icon">🍽</div>
-            <div><span class="sj-li-t">Dining</span><span class="sj-li-s">Cruz Bay's restaurants, bars, and spas are within walking distance</span></div>
+            <div><span class="sj-li-t">Dining</span><span class="sj-li-s">Restaurants, bars, and spas are within walking distance</span></div>
           </li>
         </ul>
       </div>
@@ -942,6 +955,7 @@ function buildHome(){
     </div>
   </section>
 
+  <!-- OFFERS -->
   <section class="offers-wrap">
     <div class="offers-inner">
       <div style="margin-bottom:44px">
@@ -973,6 +987,7 @@ function buildHome(){
     </div>
   </section>
 
+  <!-- REVIEWS -->
   <section class="reviews-wrap">
     <div class="reviews-inner">
       <span class="section-eyebrow">Guest Stories</span>
@@ -982,10 +997,16 @@ function buildHome(){
   </section>`;
 }
 
+/* ═══════════════════════════════════
+   VILLA DETAIL PAGE
+═══════════════════════════════════ */
 function buildVilla(id){
   const v=VD[id];
-  if(!v)return`<div style="padding:140px 40px;text-align:center"><h2 style="font-family:var(--fs);font-size:2rem;color:var(--bd)">Villa not found</h2><p style="margin-top:12px;color:var(--txl)"><span onclick="go('')" tabindex="0" role="link" style="cursor:pointer;text-decoration:underline">← Back to home</span></p></div>`;
+  if(!v)return`<div style="padding:140px 40px;text-align:center"><h2 style="font-family:var(--fs);font-size:2rem;color:var(--bd)">Villa not found</h2><p style="margin-top:12px;color:var(--txl)"><span onclick="go('')" style="cursor:pointer;text-decoration:underline">← Back to home</span></p></div>`;
   const imgs=IMG[id]||IMG.hawksbill;
+  // Start from the explicit file list if there is one; otherwise seed the show
+  // with the villa's header shot so there's always a photo on screen while
+  // initVillaSlideshow() discovers numbered files in the villa's folder.
   const listed=galleryPhotos(id);
   const gphotos=listed.length?listed:[imgs[0]];
   const slideH=gphotos.map((u,i)=>
@@ -1001,6 +1022,7 @@ function buildVilla(id){
     return`<div class="dc"><div class="di">${icon}</div><div class="dn">${name}</div><div class="dv">${val}</div></div>`;
   }).join('');
   const bookingUrl='https://www.destinationstjohn.com/accommodation/'+id+'/';
+  // Location map: keyless interactive embed + a clean, shareable place link.
   const geo=MAPS[id];
   const mapEmbed=geo
     ?`<iframe class="vmap" loading="lazy" title="Map showing ${v.name} on St. John, USVI" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${geo.lat},${geo.lng}&z=17&output=embed"></iframe>`
@@ -1015,16 +1037,17 @@ function buildVilla(id){
       <span class="vrev-more">View on Destination St. John ↗</span>
     </a>`).join(''):`<p style="font-size:.86rem;color:var(--txl);font-style:italic">No guest reviews yet.</p>`;
   const otherH=others.map(([k,ov])=>`
-    <div class="ovi" onclick="go('villa/${k}')" tabindex="0" role="link" aria-label="View ${ov.name}">
+    <div class="ovi" onclick="go('villa/${k}')">
       <img src="${IMG[k][0]}" alt="${ov.name}" loading="lazy">
       <div><div class="ovi-n">${ov.name}</div><div class="ovi-f"> ${ov.beds}BR</div></div>
     </div>`).join('');
   const tags=[`${v.beds} Bedroom${v.beds>1?'s':''}`,`${v.baths} Bathroom${v.baths>1?'s':''}`,`Up to ${v.guests} Guests`];
   const tagH=tags.map(t=>`<span class="vtag">${t}</span>`).join('');
-  const otherTabs=others.map(([k,ov])=>`<div class="vsnt" onclick="go('villa/${k}')" tabindex="0" role="link">${ov.name}</div>`).join('');
+  const otherTabs=others.map(([k,ov])=>`<div class="vsnt" onclick="go('villa/${k}')">${ov.name}</div>`).join('');
 
   return`
   <div style="padding-top:var(--nh)">
+    <!-- VILLA HERO -->
     <div class="vhero">
       <img src="${imgs[0]}" alt="${v.name}">
       <div class="vhovl"></div>
@@ -1034,14 +1057,17 @@ function buildVilla(id){
       </div>
     </div>
 
+    <!-- SUB-NAV -->
     <div class="vsubnav">
       ${otherTabs}
-      <div class="vsnt" onclick="go('')" tabindex="0" role="link">← Home</div>
+      <div class="vsnt" onclick="go('')">← Home</div>
     </div>
 
+    <!-- MAIN CONTENT -->
     <div class="vmain">
       <div class="v2col">
 
+        <!-- LEFT -->
         <div>
           <div class="vshow" tabindex="0" aria-roledescription="carousel"
                aria-label="${v.name} photo gallery" data-fallback="${imgs[0]}"
@@ -1083,9 +1109,10 @@ function buildVilla(id){
           </div>
         </div>
 
+        <!-- SIDEBAR -->
         <div class="vsidebar">
           <div class="bwid">
-            <div class="bwid-tag">${v.name}</div>
+            <div class="bwid-tag">${v.tagline}</div>
             <a class="bwid-cta" href="${bookingUrl}" target="_blank" rel="noopener">Check Dates &amp; Book →</a>
             <div class="bwid-note">Secure booking on Destination St. John</div>
           </div>
@@ -1105,14 +1132,12 @@ function buildVilla(id){
 
       </div>
     </div>
-
-    <div class="mobile-book-bar">
-      <div class="mbb-info"><strong>${v.name}</strong><span>${v.beds} Bed · ${v.baths} Bath · Up to ${v.guests} guests</span></div>
-      <a class="mbb-cta" href="${bookingUrl}" target="_blank" rel="noopener">Check Dates &amp; Book →</a>
-    </div>
   </div>`;
 }
 
+/* ═══════════════════════════════════
+   ABOUT PAGE
+═══════════════════════════════════ */
 function buildAbout(){
   const vbtns=Object.entries(VD).map(([id,v])=>`
     <button onclick="go('villa/${id}')"
@@ -1133,7 +1158,7 @@ function buildAbout(){
         <div>
           <span class="section-eyebrow">The U.S. Virgin Islands</span>
           <h2 class="section-title" style="margin-top:12px;margin-bottom:16px">A Little History of St. John</h2>
-          <p style="font-size:.91rem;line-height:1.95;color:var(--txm);margin-bottom:14px">The Danish West Indies were colonized and farmed for sugar through the 1600s and 1700s. They became American territories in 1917, when the U.S. bought them from Denmark for $25 million. St. John, the smallest and least developed of the three, still wears that history in the stone ruins of its old sugar estates.</p>
+          <p style="font-size:.91rem;line-height:1.95;color:var(--txm);margin-bottom:14px">The Danish West Indies were colonized and farmed for sugar through the 1600s and 1700s. Theybecame American territories in 1917, when the U.S. bought them from Denmark for $25 million. St. John, the smallest and least developed of the three, still wears that history in the stone ruins of its old sugar estates.</p>
           <p style="font-size:.91rem;line-height:1.95;color:var(--txm)">In 1956, land donated largely by Laurance Rockefeller became Virgin Islands National Park, which now protects more than half the island — forests, trails, shoreline, and reefs. This has helped keep the island clean: no sprawling resorts, just green hills tumbling into turquoise bays. People come for the beaches, snorkeling, and the relaxed atmosphere. US citizens do not require a passport.</p>
         </div>
         <img src="home_photos/REPTILE.JPG" alt="St. John, US Virgin Islands" style="width:100%;aspect-ratio:4/3;object-fit:cover" loading="lazy">
@@ -1148,14 +1173,9 @@ function buildAbout(){
   </div>`;
 }
 
-document.addEventListener('keydown',e=>{
-  if(e.key!=='Enter'&&e.key!==' ')return;
-  const el=e.target.closest('[role="link"][tabindex]');
-  if(!el)return;
-  e.preventDefault();
-  el.click();
-});
-
+/* ═══════════════════════════════════
+   INIT
+═══════════════════════════════════ */
 window.addEventListener('hashchange',render);
 render();
 </script>
